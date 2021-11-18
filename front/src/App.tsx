@@ -1,9 +1,15 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import AppApolloClient from "./data_sources/graphql/AppApolloClient";
+import {ApolloProvider} from "@apollo/client";
+
+
+export const apolloClient = AppApolloClient.getClientInstance()
 
 function App() {
   return (
+    <ApolloProvider client={apolloClient}>
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -20,6 +26,7 @@ function App() {
         </a>
       </header>
     </div>
+    </ApolloProvider>
   );
 }
 
