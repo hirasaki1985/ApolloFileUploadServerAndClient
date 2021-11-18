@@ -1,0 +1,13 @@
+type Query {
+    """
+    ヘルスチェック
+    """
+    healthCheck (input: HealthCheckRequest): HealthCheckResponse
+}
+
+type Mutation {
+    """
+    ファイルアップロード
+    """
+    fileUpload(file: FileUploadRequest!): FileUploadResponse
+}

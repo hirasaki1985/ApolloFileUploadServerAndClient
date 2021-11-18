@@ -1,0 +1,20 @@
+overwrite: true
+schema:
+  - ./data_sources/graphql/*.graphql
+  - ./data_sources/graphql/schemas/*.graphql
+documents:
+  - ./data_sources/graphql/queries/*.graphql
+  - ./data_sources/graphql/mutations/*.graphql
+generates:
+  ../server/src/domain/data_sources/graphql/types/ApolloServerTypes.ts:
+    config:
+      useIndexSignature: true
+      scalars:
+        FileUpload: ./data_sources/graphql/scalars#FileUpload
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-graphql-request
+  ./data_sources/graphql/schema.json:
+    plugins:
+      - introspection

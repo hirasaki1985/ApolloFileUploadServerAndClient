@@ -1,0 +1,15 @@
+scalar FileUpload
+
+"""
+ファイルアップロードリクエスト
+"""
+input FileUploadRequest {
+    file: FileUpload!
+}
+
+"""
+ファイルアップロードレスポンス
+"""
+type FileUploadResponse {
+    path: String!
+}

@@ -1,0 +1,6 @@
+query healthCheck($request: HealthCheckRequest) {
+    healthCheck(input: $request) {
+        success
+    }
+}
+

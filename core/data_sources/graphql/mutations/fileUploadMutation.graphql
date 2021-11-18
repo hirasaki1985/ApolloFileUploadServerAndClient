@@ -1,0 +1,5 @@
+mutation fileUpload($file: FileUploadRequest!) {
+    fileUpload(file: $file) {
+        path
+    }
+}

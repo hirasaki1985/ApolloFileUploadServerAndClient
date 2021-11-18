@@ -1,0 +1,15 @@
+
+"""
+ヘルスチェック
+"""
+input HealthCheckRequest {
+  _: Boolean
+}
+
+"""
+ヘルスチェック
+"""
+type HealthCheckResponse {
+  success: Boolean
+}
+
