@@ -1,24 +1,14 @@
-console.log('Try npm run lint/fix!');
+import { getServer } from "./web_server/server";
+import DotEnvUtil from "./utils/DotEnvUtil";
 
-const longString =
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut aliquet diam.';
+const main = async () => {
+  const server = await getServer()
 
-const trailing = 'Semicolon';
-
-const why = 'am I tabbed?';
-
-export function doSomeStuff(
-  withThis: string,
-  andThat: string,
-  andThose: string[]
-) {
-  //function on one line
-  if (!andThose.length) {
-    return false;
-  }
-  console.log(withThis);
-  console.log(andThat);
-  console.dir(andThose);
-  return;
+  const serverConfig = DotEnvUtil.getServerConfig();
+  const PORT = serverConfig.port || 3000;
+  server.listen(PORT, () => {
+    console.log('server listen start')
+  });
 }
-// TODO: more examples
+
+main().then()
