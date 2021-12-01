@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "generate-server": "graphql-codegen --config server_codegen.yml"
+    "generate-server": "graphql-codegen --config server_codegen.yml",
+    "generate-front": "graphql-codegen --config front_codegen.yml"
   },
   "author": "Mamoru Hirasaki <hirasaki1985@gmail.com> (https://walking-succession-falls.com/)",
   "license": "ISC",

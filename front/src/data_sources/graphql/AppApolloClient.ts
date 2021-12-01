@@ -5,11 +5,9 @@ import {
   from,
 } from '@apollo/client'
 import { createUploadLink } from 'apollo-upload-client'
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { onError } from '@apollo/client/link/error'
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { RetryLink } from '@apollo/client/link/retry'
-import DotEnvUtil from "../../utils/DotEnvUtil";
+import DotEnvUtil from '../../utils/DotEnvUtil'
 
 const apolloConfig = DotEnvUtil.apolloConfig()
 
