@@ -64,7 +64,7 @@ const MainPage = () => {
       <div>
         ヘルスチェック
         <div>
-          <button type="button" /* onClick={onClickHealthCheckButton}*/>
+          <button type="button" onClick={onClickHealthCheckButton}>
             実行
           </button>
         </div>
