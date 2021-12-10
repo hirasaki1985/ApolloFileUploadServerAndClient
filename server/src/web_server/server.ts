@@ -1,11 +1,11 @@
-import { graphqlUploadExpress } from "graphql-upload";
+import {graphqlUploadExpress} from 'graphql-upload';
 // import express from "express";
-import * as express from "express";
-import { ApolloServer } from "apollo-server-express";
-import * as bodyParser from "body-parser";
-import { typeDefs } from "./graphql/types/ApolloServerTypes"
-import { resolvers } from "./apis/resolver";
-import { Express } from "express";
+import * as express from 'express';
+import {ApolloServer} from 'apollo-server-express';
+import * as bodyParser from 'body-parser';
+import {typeDefs} from './graphql/types/ApolloServerTypes';
+import {resolvers} from './apis/resolver';
+import {Express} from 'express';
 
 /**
  * main
@@ -27,14 +27,14 @@ export const getServer = async (): Promise<Express> => {
   /**
    * graphql
    */
-  const graphqlMaxFileSize = 1000000
-  const graphqlMaxFiles = 10
+  const graphqlMaxFileSize = 1000000;
+  const graphqlMaxFiles = 10;
 
   // use
   app.use(
-    "/graphql",
+    '/graphql',
     bodyParser.json({
-      limit: "15mb",
+      limit: '15mb',
       strict: false,
     }),
     graphqlUploadExpress({
@@ -45,7 +45,7 @@ export const getServer = async (): Promise<Express> => {
   );
 
   // use apollo server with express
-  await apolloServer.start()
+  await apolloServer.start();
   apolloServer.applyMiddleware({
     app,
   });

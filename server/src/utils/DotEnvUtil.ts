@@ -1,6 +1,6 @@
-import { config } from "dotenv";
+import {config} from 'dotenv';
 
-config({ path: __dirname + "/../../.env" });
+config({path: __dirname + '/../../.env'});
 
 /**
  * DotEnv

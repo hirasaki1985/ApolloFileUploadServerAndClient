@@ -1,3 +1,3 @@
-import { FileUpload as GQFileUpload } from "graphql-upload";
+import {FileUpload as GQFileUpload} from 'graphql-upload';
 
 export type FileUpload = GQFileUpload;

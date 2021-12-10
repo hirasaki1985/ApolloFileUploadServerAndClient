@@ -9,6 +9,9 @@ export function useFileUploadAction() {
 
   return useCallback(
     async (file: File): Promise<string> => {
+      console.log('useFileUploadAction execute()', {
+        file,
+      })
       const result = await fileUploadMutation({
         variables: {
           file: {
@@ -16,6 +19,7 @@ export function useFileUploadAction() {
           },
         },
       })
+      console.log('useFileUploadAction execute() result', result)
 
       return result.data?.fileUpload?.path || ''
     },

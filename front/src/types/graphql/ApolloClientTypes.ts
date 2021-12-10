@@ -1,89 +1,108 @@
-import { FileUpload } from './scalars';
-import { gql } from '@apollo/client';
-import * as Apollo from '@apollo/client';
-export type Maybe<T> = T | null;
-export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-const defaultOptions =  {}
+import { FileUpload } from './scalars'
+import { gql } from '@apollo/client'
+import * as Apollo from '@apollo/client'
+export type Maybe<T> = T | null
+export type InputMaybe<T> = Maybe<T>
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K]
+}
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>
+}
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>
+}
+const defaultOptions = {}
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: string;
-  String: string;
-  Boolean: boolean;
-  Int: number;
-  Float: number;
-  FileUpload: FileUpload;
-};
+  ID: string
+  String: string
+  Boolean: boolean
+  Int: number
+  Float: number
+  FileUpload: FileUpload
+}
 
 /** ファイルアップロードリクエスト */
 export type FileUploadRequest = {
-  file: Scalars['FileUpload'];
-};
+  file: Scalars['FileUpload']
+}
 
 /** ファイルアップロードレスポンス */
 export type FileUploadResponse = {
-  __typename?: 'FileUploadResponse';
-  path: Scalars['String'];
-};
+  __typename?: 'FileUploadResponse'
+  path: Scalars['String']
+}
 
 /** ヘルスチェック */
 export type HealthCheckRequest = {
-  _?: InputMaybe<Scalars['Boolean']>;
-};
+  _?: InputMaybe<Scalars['Boolean']>
+}
 
 /** ヘルスチェック */
 export type HealthCheckResponse = {
-  __typename?: 'HealthCheckResponse';
-  success?: Maybe<Scalars['Boolean']>;
-};
+  __typename?: 'HealthCheckResponse'
+  success?: Maybe<Scalars['Boolean']>
+}
 
 export type Mutation = {
-  __typename?: 'Mutation';
+  __typename?: 'Mutation'
   /** ファイルアップロード */
-  fileUpload?: Maybe<FileUploadResponse>;
-};
-
+  fileUpload?: Maybe<FileUploadResponse>
+}
 
 export type MutationFileUploadArgs = {
-  file: FileUploadRequest;
-};
+  file: FileUploadRequest
+}
 
 export type Query = {
-  __typename?: 'Query';
+  __typename?: 'Query'
   /** ヘルスチェック */
-  healthCheck?: Maybe<HealthCheckResponse>;
-};
-
+  healthCheck?: Maybe<HealthCheckResponse>
+}
 
 export type QueryHealthCheckArgs = {
-  input?: InputMaybe<HealthCheckRequest>;
-};
+  input?: InputMaybe<HealthCheckRequest>
+}
 
 export type FileUploadMutationVariables = Exact<{
-  file: FileUploadRequest;
-}>;
+  file: FileUploadRequest
+}>
 
-
-export type FileUploadMutation = { __typename?: 'Mutation', fileUpload?: { __typename?: 'FileUploadResponse', path: string } | null | undefined };
+export type FileUploadMutation = {
+  __typename?: 'Mutation'
+  fileUpload?:
+    | { __typename?: 'FileUploadResponse'; path: string }
+    | null
+    | undefined
+}
 
 export type HealthCheckQueryVariables = Exact<{
-  request?: InputMaybe<HealthCheckRequest>;
-}>;
+  request?: InputMaybe<HealthCheckRequest>
+}>
 
-
-export type HealthCheckQuery = { __typename?: 'Query', healthCheck?: { __typename?: 'HealthCheckResponse', success?: boolean | null | undefined } | null | undefined };
-
+export type HealthCheckQuery = {
+  __typename?: 'Query'
+  healthCheck?:
+    | {
+        __typename?: 'HealthCheckResponse'
+        success?: boolean | null | undefined
+      }
+    | null
+    | undefined
+}
 
 export const FileUploadDocument = gql`
-    mutation fileUpload($file: FileUploadRequest!) {
-  fileUpload(file: $file) {
-    path
+  mutation fileUpload($file: FileUploadRequest!) {
+    fileUpload(file: $file) {
+      path
+    }
   }
-}
-    `;
-export type FileUploadMutationFn = Apollo.MutationFunction<FileUploadMutation, FileUploadMutationVariables>;
+`
+export type FileUploadMutationFn = Apollo.MutationFunction<
+  FileUploadMutation,
+  FileUploadMutationVariables
+>
 
 /**
  * __useFileUploadMutation__
@@ -102,20 +121,33 @@ export type FileUploadMutationFn = Apollo.MutationFunction<FileUploadMutation, F
  *   },
  * });
  */
-export function useFileUploadMutation(baseOptions?: Apollo.MutationHookOptions<FileUploadMutation, FileUploadMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<FileUploadMutation, FileUploadMutationVariables>(FileUploadDocument, options);
-      }
-export type FileUploadMutationHookResult = ReturnType<typeof useFileUploadMutation>;
-export type FileUploadMutationResult = Apollo.MutationResult<FileUploadMutation>;
-export type FileUploadMutationOptions = Apollo.BaseMutationOptions<FileUploadMutation, FileUploadMutationVariables>;
-export const HealthCheckDocument = gql`
-    query healthCheck($request: HealthCheckRequest) {
-  healthCheck(input: $request) {
-    success
-  }
+export function useFileUploadMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    FileUploadMutation,
+    FileUploadMutationVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<FileUploadMutation, FileUploadMutationVariables>(
+    FileUploadDocument,
+    options,
+  )
 }
-    `;
+export type FileUploadMutationHookResult = ReturnType<
+  typeof useFileUploadMutation
+>
+export type FileUploadMutationResult = Apollo.MutationResult<FileUploadMutation>
+export type FileUploadMutationOptions = Apollo.BaseMutationOptions<
+  FileUploadMutation,
+  FileUploadMutationVariables
+>
+export const HealthCheckDocument = gql`
+  query healthCheck($request: HealthCheckRequest) {
+    healthCheck(input: $request) {
+      success
+    }
+  }
+`
 
 /**
  * __useHealthCheckQuery__
@@ -133,22 +165,35 @@ export const HealthCheckDocument = gql`
  *   },
  * });
  */
-export function useHealthCheckQuery(baseOptions?: Apollo.QueryHookOptions<HealthCheckQuery, HealthCheckQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<HealthCheckQuery, HealthCheckQueryVariables>(HealthCheckDocument, options);
-      }
-export function useHealthCheckLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<HealthCheckQuery, HealthCheckQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<HealthCheckQuery, HealthCheckQueryVariables>(HealthCheckDocument, options);
-        }
-export type HealthCheckQueryHookResult = ReturnType<typeof useHealthCheckQuery>;
-export type HealthCheckLazyQueryHookResult = ReturnType<typeof useHealthCheckLazyQuery>;
-export type HealthCheckQueryResult = Apollo.QueryResult<HealthCheckQuery, HealthCheckQueryVariables>;
-export const namedOperations = {
-  Query: {
-    healthCheck: 'healthCheck'
-  },
-  Mutation: {
-    fileUpload: 'fileUpload'
-  }
+export function useHealthCheckQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    HealthCheckQuery,
+    HealthCheckQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<HealthCheckQuery, HealthCheckQueryVariables>(
+    HealthCheckDocument,
+    options,
+  )
 }
+export function useHealthCheckLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    HealthCheckQuery,
+    HealthCheckQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<HealthCheckQuery, HealthCheckQueryVariables>(
+    HealthCheckDocument,
+    options,
+  )
+}
+export type HealthCheckQueryHookResult = ReturnType<typeof useHealthCheckQuery>
+export type HealthCheckLazyQueryHookResult = ReturnType<
+  typeof useHealthCheckLazyQuery
+>
+export type HealthCheckQueryResult = Apollo.QueryResult<
+  HealthCheckQuery,
+  HealthCheckQueryVariables
+>

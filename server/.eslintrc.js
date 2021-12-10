@@ -8,31 +8,16 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended',
-    'plugin:react-hooks/recommended',
   ],
+  plugins: ['@typescript-eslint', 'prettier'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-    project: 'tsconfig.json',
     ecmaVersion: 2019,
     sourceType: 'module',
   },
-  plugins: [
-    'react',
-    'react-hooks',
-    'eslint-plugin-react',
-    '@typescript-eslint',
-    'prettier',
-  ],
-  settings: {
-    react: {
-      version: 'detect',
-    },
-  },
   rules: {
     'prettier/prettier': 'error',
+    semi: 'error',
+    '@typescript-eslint/ban-types': 'off',
   },
-}
+};

@@ -11,6 +11,10 @@ import DotEnvUtil from '../../utils/DotEnvUtil'
 
 const apolloConfig = DotEnvUtil.apolloConfig()
 
+console.log('AppApolloClient', {
+  apolloConfig,
+})
+
 /**
  * cache
  */
@@ -36,6 +40,11 @@ const fileUploadLink = createUploadLink({
  */
 const errorLink = onError(
   ({ graphQLErrors, networkError, forward, operation }) => {
+    console.log('AppApolloClient errorLink execute()')
+    console.log({
+      graphQLErrors,
+      networkError,
+    })
     try {
       if (networkError) console.log(`[Network error]: ${networkError}`)
 
@@ -49,11 +58,10 @@ const errorLink = onError(
 /**
  * directional link
  */
-const directionalLink = new RetryLink().concat(errorLink).split(
+/*
+const directionalLink = new RetryLink().split(
   (operation) => {
-    if (
-      ['userUploadIcon', 'companyUploadIcon'].includes(operation.operationName)
-    ) {
+    if (['fileUpload'].includes(operation.operationName)) {
       return false
     }
     return true
@@ -65,12 +73,14 @@ const directionalLink = new RetryLink().concat(errorLink).split(
   // right is false
   from([fileUploadLink]),
 )
+*/
+// const directionalLink = httpLink
 
 /**
  * ApolloClient
  */
 const client = new ApolloClient({
-  link: directionalLink,
+  link: from([errorLink, httpLink]),
   uri: apolloConfig.url,
   cache,
 })

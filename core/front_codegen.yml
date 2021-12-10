@@ -13,8 +13,8 @@ generates:
         FileUpload: ./scalars#FileUpload
       withComponent: false
       withHooks: true
+      withHOC: false
     plugins:
       - typescript
       - typescript-operations
       - typescript-react-apollo
-      - named-operations-object
