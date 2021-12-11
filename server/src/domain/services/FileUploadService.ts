@@ -8,6 +8,10 @@ export default class FileUploadService {
    * upload
    */
   public async upload(fileUpload: FileUpload): Promise<string> {
+    console.log('FileUploadService upload()');
+    console.log({
+      fileUpload,
+    });
     try {
       // get stream
       const {createReadStream, filename} = await fileUpload;

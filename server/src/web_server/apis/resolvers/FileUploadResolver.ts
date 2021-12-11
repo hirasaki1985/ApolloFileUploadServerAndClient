@@ -4,6 +4,9 @@ import FileUploadController from '../../../domain/controllers/FileUploadControll
 export const FileUploadMutation: MutationResolvers = {
   async fileUpload(_parent, {file}, context, _info) {
     console.log('FileUploadMutation fileUpload()');
+    console.log({
+      file,
+    });
 
     // execute controller
     const controller = new FileUploadController();

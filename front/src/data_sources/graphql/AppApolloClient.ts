@@ -58,9 +58,9 @@ const errorLink = onError(
 /**
  * directional link
  */
-/*
 const directionalLink = new RetryLink().split(
   (operation) => {
+    console.log(operation)
     if (['fileUpload'].includes(operation.operationName)) {
       return false
     }
@@ -73,14 +73,13 @@ const directionalLink = new RetryLink().split(
   // right is false
   from([fileUploadLink]),
 )
-*/
 // const directionalLink = httpLink
 
 /**
  * ApolloClient
  */
 const client = new ApolloClient({
-  link: from([errorLink, httpLink]),
+  link: from([errorLink, directionalLink]),
   uri: apolloConfig.url,
   cache,
 })
