@@ -4,11 +4,13 @@ import {
 } from './HealthCheckStateType'
 
 export interface HealthCheckState {
-  success: boolean
+  success: boolean | undefined
+  checkDate: string
 }
 
 export const initializeState: HealthCheckState = {
-  success: true,
+  success: undefined,
+  checkDate: '',
 }
 
 export function HealthCheckReducer(
@@ -18,7 +20,8 @@ export function HealthCheckReducer(
   switch (action.type) {
     case STATE_ACTION_HEALTH_CHECK:
       state.success = action.payload.success
-      return state
+      state.checkDate = action.payload.checkDate
+      return { ...state }
 
     default:
       return state

@@ -4,6 +4,7 @@ export interface StateActionFileUpload {
   type: typeof STATE_ACTION_FILE_UPLOAD
   payload: {
     success: boolean
+    filePath: string
   }
 }
 

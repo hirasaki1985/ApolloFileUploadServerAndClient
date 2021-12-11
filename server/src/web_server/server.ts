@@ -27,7 +27,7 @@ export const getServer = async (): Promise<Express> => {
   /**
    * graphql
    */
-  const graphqlMaxFileSize = 1000000;
+  const graphqlMaxFileSize = 100000000;
   const graphqlMaxFiles = 10;
 
   // use

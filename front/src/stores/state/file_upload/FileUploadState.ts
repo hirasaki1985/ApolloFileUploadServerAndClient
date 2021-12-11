@@ -4,11 +4,13 @@ import {
 } from './FileUploadStateType'
 
 export interface FileUploadState {
-  success: boolean
+  success: boolean | undefined
+  filePath: string
 }
 
 export const initializeState: FileUploadState = {
-  success: true,
+  success: undefined,
+  filePath: '',
 }
 
 export function FileUploadReducer(
@@ -18,7 +20,8 @@ export function FileUploadReducer(
   switch (action.type) {
     case STATE_ACTION_FILE_UPLOAD:
       state.success = action.payload.success
-      return state
+      state.filePath = action.payload.filePath
+      return { ...state }
 
     default:
       return state
