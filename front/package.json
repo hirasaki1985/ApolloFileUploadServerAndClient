@@ -54,8 +54,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "eslint-check": "eslint --ext .ts .",
-    "eslint-fix": "eslint --ext .ts . --fix",
+    "eslint-check": "eslint --ext .ts,.tsx .",
+    "eslint-fix": "eslint --ext .ts,.tsx . --fix",
     "prettier-fix": "prettier --write . ",
     "fix": "npm run eslint-fix && npm run prettier-fix"
   },
